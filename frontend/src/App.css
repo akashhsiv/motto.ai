@@ -14,7 +14,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  background-image: url("https://i.pinimg.com/564x/68/7b/28/687b287b0f3bf8b0ab1086dc92ffeb0e.jpg");
+  background-image:url("https://i.pinimg.com/564x/21/ed/4d/21ed4d8e23a12d41897b4d0f97f2bf3c.jpg");
 }
 
 /* Mobile background image */
@@ -31,12 +31,12 @@ body {
   }
 }
 
-/* Desktop background image */
+/* Desktop background image
 @media only screen and (min-width: 1025px) {
   #tsparticles canvas {
-    background-image: url("https://i.pinimg.com/564x/21/ed/4d/21ed4d8e23a12d41897b4d0f97f2bf3c.jpg");
+    background-image: 
   }
-}
+} */
 
 /* ---- stats.js ---- */
 .count-particles {
