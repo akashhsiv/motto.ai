@@ -12,13 +12,12 @@ body {
   height: 100%;
   background-color: #b61924;
   background-repeat: no-repeat;
-  background-image: url("https://i.pinimg.com/564x/68/7b/28/687b287b0f3bf8b0ab1086dc92ffeb0e.jpg");
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  background-image: url("https://i.pinimg.com/564x/68/7b/28/687b287b0f3bf8b0ab1086dc92ffeb0e.jpg");
+}
 
-
-  /* Mobile background image */
+/* Mobile background image */
 @media only screen and (max-width: 600px) {
   #tsparticles canvas {
     background-image: url("https://i.pinimg.com/564x/26/3a/25/263a254058a96fdb56a642afb36e5c57.jpg");
@@ -38,7 +37,8 @@ body {
     background-image: url("https://i.pinimg.com/564x/21/ed/4d/21ed4d8e23a12d41897b4d0f97f2bf3c.jpg");
   }
 }
-} /* ---- stats.js ---- */
+
+/* ---- stats.js ---- */
 .count-particles {
   background: #000022;
   position: absolute;
@@ -54,15 +54,16 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
 }
+
 .js-count-particles {
   font-size: 1.1em;
 }
-#stats,
 
 #stats {
   border-radius: 3px 3px 0 0;
   overflow: hidden;
 }
+
 .count-particles {
   border-radius: 0 0 3px 3px;
 }
@@ -78,4 +79,3 @@ body {
     opacity: 1;
   }
 }
-

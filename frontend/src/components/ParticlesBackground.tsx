@@ -89,7 +89,7 @@ const ParticlesComponent = () => {
           density: {
             enable: true,
           },
-          value: 80,
+          value: 160,
         },
         opacity: {
           value: 0.5,
