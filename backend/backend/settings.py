@@ -143,7 +143,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://motto-ai.vercel.app/login",
+    "https://motto-ai.vercel.app/",
 ]
 
 AUTH_USER_MODEL = "users.Users"
