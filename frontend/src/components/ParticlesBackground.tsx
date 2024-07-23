@@ -11,8 +11,10 @@ import {
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 
+  
+
 const ParticlesComponent = () => {
-  const [_, setInit] = useState(false);
+  const [_ , setInit] = useState(false);
 
   // this should be run only once per application lifetime
   useEffect(() => {
@@ -69,18 +71,18 @@ const ParticlesComponent = () => {
         links: {
           color: "#ffffff",
           distance: 150,
-          enable: true,
+          enable: false,
           opacity: 0.5,
           width: 1,
         },
         move: {
-          direction: MoveDirection.none,
+          direction: MoveDirection.bottomLeft,
           enable: true,
           outModes: {
             default: OutMode.out,
           },
-          random: false,
-          speed: 6,
+          random: true,
+          speed: 4,
           straight: false,
         },
         number: {

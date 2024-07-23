@@ -1,4 +1,10 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  ChangeEvent,
+  KeyboardEvent,
+} from "react";
 import {
   Box,
   Container,
@@ -9,6 +15,7 @@ import {
   TextField,
   Typography,
   Paper,
+  Skeleton,
 } from "@mui/material";
 import { RespAppBar } from "./RespAppBar";
 import SendIcon from "@mui/icons-material/Send";
@@ -25,11 +32,20 @@ export const Home: React.FC = () => {
   const authHeader = useAuthHeader();
   const [input, setInput] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.scrollTop = listRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const handleSendMessage = async () => {
     if (input.trim()) {
       setMessages([...messages, { text: input, sender: "user" }]);
       setInput("");
+      setLoading(true);
 
       try {
         const response = await axios.post(
@@ -54,6 +70,8 @@ export const Home: React.FC = () => {
           { text: "Error sending message", sender: "ai" },
         ]);
         console.error("Error sending message:", error);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -73,8 +91,6 @@ export const Home: React.FC = () => {
     <>
       <RespAppBar />
       <Container
-        // component={"img"}
-        // src=""
         maxWidth={"xl"}
         sx={{
           mt: 4,
@@ -85,11 +101,28 @@ export const Home: React.FC = () => {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          bgcolor: "transparent", // Make container background transparent
+          bgcolor: "transparent",
           borderRadius: "6px",
           boxShadow: `0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)`,
           position: "relative",
           overflow: "hidden",
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "white",
+            },
+            "&:hover fieldset": {
+              borderColor: "white",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "white",
+            },
+          },
+          "& .MuiInputBase-input": {
+            "&::placeholder": {
+              color: "white",
+            },
+            color: "white",
+          },
         }}
       >
         <ParticlesComponent />
@@ -98,7 +131,7 @@ export const Home: React.FC = () => {
           sx={{
             textAlign: "center",
             pt: 4,
-            color: "black",
+            color: "white",
             fontFamily: "Outfit",
             position: "relative",
             zIndex: 1, // Ensure text is on top of the particles
@@ -118,12 +151,27 @@ export const Home: React.FC = () => {
             justifyContent: "space-between",
             padding: 2,
             borderRadius: "6px",
-            // border: `1px solid black`,
             position: "relative",
             zIndex: 1, // Ensure chat area is on top of the particles
           }}
         >
-          <List sx={{ overflowY: "auto", flexGrow: 1 }}>
+          <List
+            ref={listRef}
+            sx={{
+              overflowY: "auto",
+              flexGrow: 1,
+              "&::-webkit-scrollbar": {
+                width: "8px",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#888",
+                borderRadius: "4px",
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                backgroundColor: "#555",
+              },
+            }}
+          >
             {messages.map((msg, index) => (
               <ListItem
                 key={index}
@@ -135,7 +183,8 @@ export const Home: React.FC = () => {
                 <Paper
                   sx={{
                     padding: 1,
-                    borderRadius: 1,
+                    px: 2,
+                    borderRadius: 8,
                     backgroundColor:
                       msg.sender === "user" ? "#1976d2" : "#e0e0e0",
                     color: msg.sender === "user" ? "#fff" : "#000",
@@ -146,17 +195,33 @@ export const Home: React.FC = () => {
                 </Paper>
               </ListItem>
             ))}
+            {loading && (
+              <ListItem
+                sx={{
+                  justifyContent: "flex-start",
+                }}
+              >
+                <Skeleton
+                  variant="rectangular"
+                  width={210}
+                  height={60}
+                  sx={{ borderRadius: 8, animation: "pulse 1.5s infinite" }}
+                />
+              </ListItem>
+            )}
           </List>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <TextField
+              color="primary"
               variant="outlined"
               placeholder="Type a message"
               value={input}
               onChange={handleMessageChange}
               onKeyPress={handleKeyPress}
-              sx={{ flexGrow: 1, marginRight: 1 }}
+              sx={{ flexGrow: 1, marginRight: 1, input: { color: "white" } }}
+              inputProps={{ style: { color: "white" } }}
             />
-            <IconButton color="primary" onClick={handleSendMessage}>
+            <IconButton color="secondary" onClick={handleSendMessage}>
               <SendIcon />
             </IconButton>
           </Box>
@@ -165,3 +230,5 @@ export const Home: React.FC = () => {
     </>
   );
 };
+
+export default Home;

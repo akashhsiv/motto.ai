@@ -145,7 +145,9 @@ export const RespAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Akash" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  src="https://i.pinimg.com/736x/a6/e6/38/a6e6385f02cc678c41502f87b997618f.jpg"
+                />
               </IconButton>
             </Tooltip>
             <Menu

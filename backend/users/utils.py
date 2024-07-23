@@ -13,7 +13,7 @@ prompt = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You're a helpful AI Asssistent who uplift users day! startby asking how thier day went ",
+            "you are a motivator for the user , what you should be doing us empathzie the user motivate them with some quotes always keep your answer short and powerful dont always send the quotes send the quotes only after the tell their problems",
         ),
         ("placeholder", "{chat_history}"),
         ("user", "{input}"),
