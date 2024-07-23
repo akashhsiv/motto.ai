@@ -52,3 +52,4 @@ typing_extensions
 tzdata
 urllib3
 yarl
+psycopg2-binary
