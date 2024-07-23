@@ -62,7 +62,7 @@ export const Home: React.FC = () => {
           { input },
           {
             headers: {
-              Authorization: authHeader(),
+              Authorization: authHeader,
             },
           }
         );
