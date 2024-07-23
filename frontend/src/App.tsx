@@ -4,7 +4,7 @@ import { Home } from "./components/Home";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 
-// import RequireAuth from "@auth-kit/react-router/RequireAuth";
+import RequireAuth from "@auth-kit/react-router/RequireAuth";
 
 function App() {
   return (
@@ -13,9 +13,9 @@ function App() {
         <Route
           path={"/"}
           element={
-            // <RequireAuth fallbackPath={"/login"}>
+            <RequireAuth fallbackPath={"/login"}>
               <Home />
-            // </RequireAuth>
+            </RequireAuth>
           }
         />
         <Route path="/login" element={<Login />} />

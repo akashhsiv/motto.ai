@@ -24,6 +24,7 @@ import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import ParticlesComponent from "./ParticlesBackground";
+import { useNavigate } from "react-router-dom";
 
 interface Message {
   text: string;
@@ -32,6 +33,7 @@ interface Message {
 
 export const Home: React.FC = () => {
   const authHeader = useAuthHeader();
+   const navigate = useNavigate();
   const [input, setInput] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -74,11 +76,25 @@ export const Home: React.FC = () => {
           { text: aiMessage, sender: "ai" },
         ]);
       } catch (error) {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { text: "Error sending message", sender: "ai" },
-        ]);
         console.error("Error sending message:", error);
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.detail ===
+            "Authentication credentials were not provided."
+        ) {
+          // Redirect to login page and inform the user
+          navigate("/login");
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            { text: "Please login again.", sender: "ai" },
+          ]);
+        } else {
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            { text: "Error sending message", sender: "ai" },
+          ]);
+        }
       } finally {
         setLoading(false);
       }
