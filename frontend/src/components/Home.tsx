@@ -49,7 +49,7 @@ export const Home: React.FC = () => {
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/chatbot/",
+          "https://motto-ai-be.vercel.app/api/chatbot/",
           { input },
           {
             headers: {

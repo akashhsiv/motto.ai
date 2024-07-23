@@ -50,10 +50,13 @@ export const Login: React.FC = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login/", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://motto-ai-be.vercel.app/api/login/",
+        {
+          email,
+          password,
+        }
+      );
 
       // Handle successful login
       console.log("Login successful:", response.data);
