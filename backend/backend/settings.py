@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-*klr#9f+mge^!fltxp^v^*)2m2fdiw@045wm(o67(@$37v5r3n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://motto-ai.vercel.app/"]
+ALLOWED_HOSTS = ["https://motto-ai-be.vercel.app/"]
 
 
 # Application definition
