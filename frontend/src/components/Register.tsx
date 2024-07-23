@@ -54,7 +54,7 @@ export const Register: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "https://motto-ai-be.vercel.app/api/register",
+        "https://motto-ai-be.vercel.app/api/register/",
         {
           username,
           email,
