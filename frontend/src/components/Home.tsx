@@ -16,6 +16,8 @@ import {
   Typography,
   Paper,
   Skeleton,
+  useMediaQuery,
+  Theme,
 } from "@mui/material";
 import { RespAppBar } from "./RespAppBar";
 import SendIcon from "@mui/icons-material/Send";
@@ -35,6 +37,13 @@ export const Home: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const listRef = useRef<HTMLUListElement>(null);
 
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("sm")
+  );
+  const isTablet = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.between("sm", "md")
+  );
+
   useEffect(() => {
     if (listRef.current) {
       listRef.current.scrollTop = listRef.current.scrollHeight;
@@ -53,7 +62,7 @@ export const Home: React.FC = () => {
           { input },
           {
             headers: {
-              Authorization: authHeader,
+              Authorization: authHeader(),
             },
           }
         );
@@ -94,7 +103,7 @@ export const Home: React.FC = () => {
         maxWidth={"xl"}
         sx={{
           mt: 4,
-          height: 600,
+          height: isMobile ? "90vh" : isTablet ? "80vh" : 600,
           mb: 4,
           width: "98%",
           display: "flex",
@@ -144,8 +153,8 @@ export const Home: React.FC = () => {
         </Typography>
         <Box
           sx={{
-            height: 430,
-            width: 920,
+            height: isMobile ? "70vh" : isTablet ? "60vh" : 430,
+            width: isMobile ? "100%" : isTablet ? 720 : 920,
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
