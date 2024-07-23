@@ -13,7 +13,7 @@ prompt = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            """Provide a brief and concise answer. Keep it simple,
+            """Provide a brief and concise answer your job is to motivate them. Keep it simple,
             avoid overdoing it, and include quotes occasionally, not regularly.
             Avoid motivational phrases like "I am here to motivate you.""",
         ),
