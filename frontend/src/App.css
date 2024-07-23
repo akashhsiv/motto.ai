@@ -16,6 +16,28 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+
+
+  /* Mobile background image */
+@media only screen and (max-width: 600px) {
+  #tsparticles canvas {
+    background-image: url("https://i.pinimg.com/564x/26/3a/25/263a254058a96fdb56a642afb36e5c57.jpg");
+  }
+}
+
+/* Tablet background image */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  #tsparticles canvas {
+    background-image: url("https://i.pinimg.com/564x/f7/a8/9d/f7a89ddb7fc4dfe1dd704f0c51a5b0f5.jpg");
+  }
+}
+
+/* Desktop background image */
+@media only screen and (min-width: 1025px) {
+  #tsparticles canvas {
+    background-image: url("https://i.pinimg.com/564x/21/ed/4d/21ed4d8e23a12d41897b4d0f97f2bf3c.jpg");
+  }
+}
 } /* ---- stats.js ---- */
 .count-particles {
   background: #000022;

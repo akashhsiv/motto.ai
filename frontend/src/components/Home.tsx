@@ -76,30 +76,35 @@ export const Home: React.FC = () => {
           { text: aiMessage, sender: "ai" },
         ]);
       } catch (error) {
-        console.error("Error sending message:", error);
-        if (
-          error.response &&
-          error.response.data &&
-          error.response.data.detail ===
+        if (axios.isAxiosError(error) && error.response) {
+          if (
+            error.response.data.detail ===
             "Authentication credentials were not provided."
-        ) {
-          // Redirect to login page and inform the user
-          navigate("/login");
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { text: "Please login again.", sender: "ai" },
-          ]);
+          ) {
+            navigate("/login");
+            setMessages((prevMessages) => [
+              ...prevMessages,
+              { text: "Please log in again.", sender: "ai" },
+            ]);
+          } else {
+            setMessages((prevMessages) => [
+              ...prevMessages,
+              { text: "Error sending message", sender: "ai" },
+            ]);
+          }
         } else {
           setMessages((prevMessages) => [
             ...prevMessages,
             { text: "Error sending message", sender: "ai" },
           ]);
         }
+        console.error("Error sending message:", error);
       } finally {
         setLoading(false);
       }
     }
   };
+
 
   const handleMessageChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
