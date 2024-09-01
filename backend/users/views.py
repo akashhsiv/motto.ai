@@ -28,7 +28,7 @@ class ChatMessageView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-
+        print(request.META)
         user_message = request.data.get("input", "")
         if not user_message:
             return Response(
