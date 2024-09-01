@@ -93,6 +93,24 @@ export const Login: React.FC = () => {
           boxShadow: 3,
         }}
       >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginBottom: 4,
+          }}
+        >
+          <img
+            src="logomotto.jpeg"
+            alt="App Logo"
+            width="40"
+          />
+          <Typography variant="h4" component="h1" gutterBottom>
+            MottO.AI
+          </Typography>
+          <Typography>I Am Here For You</Typography>
+        </Box>
         <Typography variant="h4" component="h1" gutterBottom>
           Login
         </Typography>

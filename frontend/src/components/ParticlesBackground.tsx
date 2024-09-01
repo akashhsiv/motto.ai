@@ -14,6 +14,7 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
   
 
 const ParticlesComponent = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_ , setInit] = useState(false);
 
   // this should be run only once per application lifetime
