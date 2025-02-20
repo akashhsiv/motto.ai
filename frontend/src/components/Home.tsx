@@ -169,7 +169,7 @@ export const Home: React.FC = () => {
           variant="h5"
           gutterBottom
         >
-          Are You feeling down today? <br />
+         Why Are You feeling down today? <br />
           Here I am!!
         </Typography>
         <Box
