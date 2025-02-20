@@ -98,7 +98,7 @@ export const Register: React.FC = () => {
           <Typography variant="h4" component="h1" gutterBottom>
             MottO.AI
           </Typography>
-          <Typography>I Am Here For You</Typography>
+                    <Typography> Sorry to say but i think we motivated enough people that we excceded our budget</Typography>
         </Box>
         <Typography variant="h4" component="h1" gutterBottom>
           Register
